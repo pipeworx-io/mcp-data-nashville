@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/data-nashville",
   "title": "Data Nashville",
   "description": "DataNashville MCP — Nashville open data (data.nashville.gov, ArcGIS REST API).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/data-nashville",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-data-nashville",
