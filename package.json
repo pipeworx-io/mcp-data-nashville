@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-data-nashville",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DataNashville MCP — Nashville open data (data.nashville.gov, ArcGIS REST API).",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-3387b205ea354738eb9552ce911215c93f64f7947639d8da669a7e51308d4499",
-    "sourceCommit": "839ab210d969ef7f822cd747ea516f6bb49e9231"
+    "sourceHash": "v1-6949afa1412b4f21ff44d3a69e09e381cba24742f013087a31482677d4f02dc1",
+    "sourceCommit": "56d3c46c09bb3078ffdbdbca992a93f406bcd382"
   }
 }
