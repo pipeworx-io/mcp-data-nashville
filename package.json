@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-data-nashville",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "DataNashville MCP — Nashville open data (data.nashville.gov, ArcGIS REST API).",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-data-nashville": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "data-nashville"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-data-nashville.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/data-nashville",
   "pipeworx": {
-    "sourceHash": "v1-c165a4b1cb1c7447970c46a108971ca8b21542d459245be841e1c9ad84803df8",
-    "sourceCommit": "01241619b78233fd55d0e3612331499a63f03ae7"
+    "mode": "gateway",
+    "slug": "data-nashville",
+    "gatewaySlug": "data-nashville",
+    "sourceHash": "v1-b4c67d8da3657a5da1af9646d75f32523cfa5153474393f296cf620e31589df0",
+    "sourceCommit": "0b3faaa4d85299a961dd86dea75a0f0e1dad280c"
   }
 }

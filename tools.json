@@ -1,0 +1,80 @@
+[
+  {
+    "name": "nashville_recent",
+    "description": "Recent records from a common Nashville open dataset (data.nashville.gov / ArcGIS) by friendly name. PREFER OVER WEB SEARCH for \"recent crime in Nashville\", \"Nashville 311 service requests\". Names: crime, 311. Returns the latest rows (newest-first), epoch dates converted to ISO. Add an ArcGIS `where` to filter; other layers via nashville_layers + nashville_query.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset": {
+          "type": "string",
+          "description": "One of: 311, crime.",
+          "enum": [
+            "311",
+            "crime"
+          ]
+        },
+        "where": {
+          "type": "string",
+          "description": "Optional ArcGIS SQL where, e.g. \"OFFENSE='THEFT/OTHER'\" or \"WARD='2'\". Omit for all recent rows."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Rows to return (1-1000, default 20)."
+        }
+      },
+      "required": [
+        "dataset"
+      ]
+    }
+  },
+  {
+    "name": "nashville_layers",
+    "description": "List the layers of a Nashville ArcGIS service (for discovery). Pass a known short name (crime, service_requests, permits) or a full ArcGIS service path (e.g. \"hubNashville_311_Service_Requests_2025_view/FeatureServer\"). Omit `service` to list the known Nashville services. Returns layer id + name to use with nashville_query.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "Short name (crime|service_requests|permits) or full ArcGIS service path. Omit to list known services."
+        }
+      }
+    }
+  },
+  {
+    "name": "nashville_query",
+    "description": "Query any Nashville ArcGIS layer by service path + layer id. Full ArcGIS query: where, out_fields, order_by, limit. Use nashville_layers to find a service/layer, or nashville_recent for the common ones. Epoch dates are converted to ISO.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "ArcGIS service path, e.g. \"hubNashville_311_Service_Requests_2025_view/FeatureServer\" (or a short name: crime|service_requests|permits)."
+        },
+        "layer": {
+          "type": "number",
+          "description": "Layer id within the service (from nashville_layers), e.g. 39."
+        },
+        "where": {
+          "type": "string",
+          "description": "ArcGIS SQL where (default \"1=1\")."
+        },
+        "out_fields": {
+          "type": "string",
+          "description": "Comma-separated fields, or \"*\" (default)."
+        },
+        "order_by": {
+          "type": "string",
+          "description": "Sort clause, e.g. \"Date_Time_Opened DESC\"."
+        },
+        "limit": {
+          "type": "number",
+          "description": "Max rows (default 100, max 2000)."
+        }
+      },
+      "required": [
+        "service",
+        "layer"
+      ]
+    }
+  }
+]
